@@ -9,7 +9,7 @@ def main():
     # Cria o objeto de serviço de arquivo
     file_service = FileService()
 
-    # Inicia o daemon Pyro
+    # Inicia o daemon Pyro 
     daemon = Pyro5.api.Daemon()
 
     # Registra o objeto de serviço no daemon
