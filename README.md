@@ -23,3 +23,8 @@ o upload;
 - <b>ALISSON</b> -> camada model
 - <b>LUIS FELIPE</b> view
 - <b>ISRAEL</b> -> login
+
+# Dependências
+Pyro5 -> pip install Pyro5
+Tkinter -> sudo apt-get install python3-tk (Linux)
+Django -> pip install django

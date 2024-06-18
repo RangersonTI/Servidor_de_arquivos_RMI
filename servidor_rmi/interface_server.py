@@ -43,7 +43,7 @@ window.configure(background="#91c29b")
 
 
 #### CRIAÇÃO DA LOGO ####
-logo = PhotoImage(file="assets/servidor_chat.png", width=150, height=150)
+logo = PhotoImage(file="servidor_rmi/assets/server_file.png", width=160, height=160)
 
 label_logo = Label(window, image=logo, justify="center", background="#91c29b")
 window.update()
