@@ -1,4 +1,5 @@
 # árvore do projeto
+```html
 <div style="background-color: black; padding: 100px;">
 <b>Servidor_de_arquivos_RMI/</b> <br>
 │<br>
@@ -54,6 +55,7 @@
 ├── README.md<br>
 └── .gitignore<br>
 </div>
+```html
 
 
 # MODIFICAÇÕES ALISSON
