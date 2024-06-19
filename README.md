@@ -1,8 +1,8 @@
 # árvore do projeto
 
-Servidor_de_arquivos_RMI/ <br>
+<b>Servidor_de_arquivos_RMI/</b> <br>
 │<br>
-├── cliente_rmi/<br>
+├── <b>cliente_rmi/</b><br>
 │   ├── __init__.py<br>
 │   ├── admin.py<br>
 │   ├── apps.py<br>
@@ -24,10 +24,10 @@ Servidor_de_arquivos_RMI/ <br>
 │   │   ├── enviar.html<br>
 │   │   └── visualizar.html<br>
 │<br>
-├── media/<br>
+├── <b>media/</b><br>
 │   ├── uploads/<br>
 |<br>
-├── servidor_de_arquivos_rmi/<br>
+├── <b>servidor_de_arquivos_rmi/</b><br>
 │   ├── __init__.py<br>
 │   ├── asgi.py<br>
 │   ├── settings.py<br>
@@ -37,7 +37,7 @@ Servidor_de_arquivos_RMI/ <br>
 │       ├── __init__.cpython-311.pyc<br>
 │       └── __init__.cpython-312.pyc<br>
 │<br>
-├── servidor_rmi/<br>
+├── <b>servidor_rmi/</b><br>                                                                       
 │   ├── __init__.py<br>
 │   ├── assets/<br>
 │   │   └── server_file.png<br>
