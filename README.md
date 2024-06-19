@@ -1,6 +1,6 @@
 # árvore do projeto
 
-<div class="blue-background">
+<div>
 <b>Servidor_de_arquivos_RMI/</b> <br>
 │<br>
 ├── <b>cliente_rmi/</b><br>
