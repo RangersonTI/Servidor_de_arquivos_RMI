@@ -3,29 +3,38 @@ import Pyro5.api
 
 @Pyro5.api.expose
 class FileService:
-    def list_files(self, directory_path):
-        try:
-            return os.listdir(directory_path)
-        except Exception as e:
-            return str(e)
     
-    def read_file(self, file_path):
-        try:
-            with open(file_path, 'r') as file:
-                return file.read()
-        except Exception as e:
-            return str(e)
+    def __init__(self, diretorio):
+        self.diretorio = diretorio
+        
+        if not os.path.exists(diretorio):
+            os.makedirs(diretorio)
     
-    def get_file_size(self, file_path):
+    def listar_arquivos(self):
         try:
-            return os.path.getsize(file_path)
-        except Exception as e:
-            return str(e)
+            return os.listdir(self.diretorio)
+        except Exception as ex:
+            return str(f"Erro: {ex}")
     
-    def download_file(self, file_path, start, length):
+    def baixar_arquivo(self, nome_arquivo):
         try:
-            with open(file_path, 'rb') as file:
-                file.seek(start)
-                return file.read(length)
-        except Exception as e:
-            return str(e)
+            arquivo = os.path.join(self.diretorio, nome_arquivo)
+            with open(arquivo, 'rb') as arquivo_down:
+                return arquivo_down.read()
+        except Exception as ex:
+            return str(f"Erro: {ex}")
+    
+    def enviar_arquivo(self, nome_arquivo, data):
+        try:
+            arquivo = os.path.join(self.diretorio, nome_arquivo)
+            with open(arquivo,'wb') as arquivo_up:
+                arquivo_up.write(data)
+                print(f"Arquivo ´{nome_arquivo}´ enviado")
+        except Exception as ex:
+            return str(f"Erro: {ex}")
+    
+    def excluir_arquivo(self, nome_arquivo):
+        arquivo = os.path.join(self.diretorio, nome_arquivo)
+        
+        if os.path.exists(arquivo):
+            os.remove(arquivo)
