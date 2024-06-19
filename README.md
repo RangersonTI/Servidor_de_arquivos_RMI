@@ -1,6 +1,6 @@
 # árvore do projeto
 ```html
-<div style="background-color: black; padding: 100px; margin: 0 auto; width: 50%;">
+<div style="background-color: black; padding: 100px; width: 50%; margin: 0 auto; text-align: center;">
 <b>Servidor_de_arquivos_RMI/</b> <br>
 │<br>
 ├── <b>cliente_rmi/</b><br>
