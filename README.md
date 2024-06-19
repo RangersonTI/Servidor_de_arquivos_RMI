@@ -7,6 +7,7 @@
     margin: 0 auto;
     text-align: center;
 }
+```
 <div class="blue-background">
 <b>Servidor_de_arquivos_RMI/</b> <br>
 │<br>
