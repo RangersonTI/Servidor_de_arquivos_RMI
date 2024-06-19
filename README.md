@@ -1,5 +1,5 @@
 # árvore do projeto
-<div style="background-color: #f0f0f0; border-radius: 10px; padding: 10px;">
+<div style="background-color: #f0f0f0; padding: 10px;">
 <b>Servidor_de_arquivos_RMI/</b> <br>
 │<br>
 ├── <b>cliente_rmi/</b><br>
