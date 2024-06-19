@@ -1,6 +1,13 @@
 # árvore do projeto
-
-<div style="background-color: black; padding: 100px; width: 50%; margin: 0 auto; text-align: center;">
+```css
+.blue-background {
+    background-color: #f0f0ff;
+    padding: 10px;
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+}
+<div class="blue-background">
 <b>Servidor_de_arquivos_RMI/</b> <br>
 │<br>
 ├── <b>cliente_rmi/</b><br>
