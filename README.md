@@ -1,3 +1,73 @@
+# árvore do projeto
+
+Servidor_de_arquivos_RMI/
+│
+├── cliente_rmi/
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── migrations/
+│   │   ├── __init__.py
+│   │   └── __pycache__/
+│   │       ├── __init__.cpython-311.pyc
+│   │       └── __init__.cpython-312.pyc
+│   ├── models.py
+│   ├── tests.py
+│   ├── views.py
+│   ├── templates/
+│   │   ├── base/
+│   │   │   ├── base.html
+│   │   │   └── menu.html
+│   │   ├── static/
+│   │   │   └── css/
+│   │   │       └── style.css
+│   │   ├── enviar.html
+│   │   └── visualizar.html
+│
+├── media/
+│   ├── uploads/
+|
+├── servidor_de_arquivos_rmi/
+│   ├── __init__.py
+│   ├── asgi.py
+│   ├── settings.py
+│   ├── urls.py
+│   ├── wsgi.py
+│   └── __pycache__/
+│       ├── __init__.cpython-311.pyc
+│       └── __init__.cpython-312.pyc
+│
+├── servidor_rmi/
+│   ├── __init__.py
+│   ├── assets/
+│   │   └── server_file.png
+│   ├── Client.py
+│   ├── FileService.py
+│   ├── Server.py
+│   └── __pycache__/
+│       ├── Client.cpython-311.pyc
+│       ├── FileService.cpython-311.pyc
+│       └── Server.cpython-311.pyc
+│
+├── db.sqlite3
+├── manage.py
+├── README.md
+└── .gitignore
+
+
+
+# MODIICAÇÕES ALISSON
+
+- settings.py do servidor_de_arquivos_rmi
+- models.py do cliente_rmi
+- urls.py do servidor_de_arquivos_rmi
+
+<b>o banco de dados já foi construído</b>
+
+
+
+
+
 # requisitos 
 
 - <b>(1)LOGIN</b> Os clientes deverão se conectar ao servidor com as informações necessárias;
