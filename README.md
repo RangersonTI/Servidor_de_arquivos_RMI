@@ -1,62 +1,62 @@
 # árvore do projeto
 
-Servidor_de_arquivos_RMI/
-│
-├── cliente_rmi/
-│   ├── __init__.py
-│   ├── admin.py
-│   ├── apps.py
-│   ├── migrations/
-│   │   ├── __init__.py
-│   │   └── __pycache__/
-│   │       ├── __init__.cpython-311.pyc
-│   │       └── __init__.cpython-312.pyc
-│   ├── models.py
-│   ├── tests.py
-│   ├── views.py
-│   ├── templates/
-│   │   ├── base/
-│   │   │   ├── base.html
-│   │   │   └── menu.html
-│   │   ├── static/
-│   │   │   └── css/
-│   │   │       └── style.css
-│   │   ├── enviar.html
-│   │   └── visualizar.html
-│
-├── media/
-│   ├── uploads/
-|
-├── servidor_de_arquivos_rmi/
-│   ├── __init__.py
-│   ├── asgi.py
-│   ├── settings.py
-│   ├── urls.py
-│   ├── wsgi.py
-│   └── __pycache__/
-│       ├── __init__.cpython-311.pyc
-│       └── __init__.cpython-312.pyc
-│
-├── servidor_rmi/
-│   ├── __init__.py
-│   ├── assets/
-│   │   └── server_file.png
-│   ├── Client.py
-│   ├── FileService.py
-│   ├── Server.py
-│   └── __pycache__/
-│       ├── Client.cpython-311.pyc
-│       ├── FileService.cpython-311.pyc
-│       └── Server.cpython-311.pyc
-│
-├── db.sqlite3
-├── manage.py
-├── README.md
-└── .gitignore
+Servidor_de_arquivos_RMI/ <br>
+│<br>
+├── cliente_rmi/<br>
+│   ├── __init__.py<br>
+│   ├── admin.py<br>
+│   ├── apps.py<br>
+│   ├── migrations/<br>
+│   │   ├── __init__.py<br>
+│   │   └── __pycache__/<br>
+│   │       ├── __init__.cpython-311.pyc<br>
+│   │       └── __init__.cpython-312.pyc<br>
+│   ├── models.py<br>
+│   ├── tests.py<br>
+│   ├── views.py<br>
+│   ├── templates/<br>
+│   │   ├── base/<br>
+│   │   │   ├── base.html<br>
+│   │   │   └── menu.html<br>
+│   │   ├── static/<br>
+│   │   │   └── css/<br>
+│   │   │       └── style.css<br>
+│   │   ├── enviar.html<br>
+│   │   └── visualizar.html<br>
+│<br>
+├── media/<br>
+│   ├── uploads/<br>
+|<br>
+├── servidor_de_arquivos_rmi/<br>
+│   ├── __init__.py<br>
+│   ├── asgi.py<br>
+│   ├── settings.py<br>
+│   ├── urls.py<br>
+│   ├── wsgi.py<br>
+│   └── __pycache__/<br>
+│       ├── __init__.cpython-311.pyc<br>
+│       └── __init__.cpython-312.pyc<br>
+│<br>
+├── servidor_rmi/<br>
+│   ├── __init__.py<br>
+│   ├── assets/<br>
+│   │   └── server_file.png<br>
+│   ├── Client.py<br>
+│   ├── FileService.py<br>
+│   ├── Server.py<br>
+│   └── __pycache__/<br>
+│       ├── Client.cpython-311.pyc<br>
+│       ├── FileService.cpython-311.pyc<br>
+│       └── Server.cpython-311.pyc<br>
+│<br>
+├── db.sqlite3<br>
+├── manage.py<br>
+├── README.md<br>
+└── .gitignore<br>
 
 
 
-# MODIICAÇÕES ALISSON
+# MODIFICAÇÕES ALISSON
 
 - settings.py do servidor_de_arquivos_rmi
 - models.py do cliente_rmi
