@@ -20,7 +20,7 @@ from cliente_rmi import views as view_client
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',view_client.home),
-    path('files/',view_client.visualizar_arquivos),
-    path('upload/',view_client.enviar_arquivos),
+    path('',view_client.visualizar_arquivos, name='visualizar_arquivos'),
+    path('files/',view_client.visualizar_arquivos, name='visualizar_arquivos'),
+    path('upload/',view_client.enviar_arquivos, name='enviar_arquivo'),
 ]

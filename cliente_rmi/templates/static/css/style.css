@@ -1,0 +1,16 @@
+.teste{
+    text-align: center;
+    justify-items: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    background-color: rgb(136, 136, 211);
+}
+body{
+    background-color: aquamarine;
+}
+
+.alinhar_menu{
+    display: inline-block;
+    width: 50%;
+    justify-content: center;
+}cliente_rmi\templates\static\style.css

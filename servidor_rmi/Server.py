@@ -4,24 +4,26 @@
 
 from tkinter import *
 from tkinter.ttk import Label
-import platform
 import Pyro5.api as Pyro5
+import platform, os
 from FileService import FileService
+
+porta = 3000
 
 class Server:
     def main():
-        file_service = FileService()
-        daemon = Pyro5.Daemon(port=3000)
+        diretorio = verificar_SO()
+        file_service = FileService(diretorio)
+
+        daemon = Pyro5.Daemon(port=porta)
         uri = daemon.register(file_service)
-        
-        name_server = Pyro5.locate_ns()
-        name_server.register("obj", uri)
-        
+
+        #name_server = Pyro5.locate_ns()
+        #name_server.register("obj", uri)
+
         print(f"Serviço de arquivo em funcionamento. \nURI: {uri}")
         daemon.requestLoop()
         
-    
-
     
 def iniciar_servidor():
     
@@ -31,14 +33,16 @@ def iniciar_servidor():
     print("Servidor Iniciado")
 
 def fechar_servidor():
+    return 0
 
-    global server_process
-    if server_process:
-        server_process.kill()
-        server_process = None
-        exit()
-    else:
-        exit()
+def verificar_SO():
+    so_atual = platform.system()
+
+    if so_atual == "Linux":
+        usuario = os.getlogin()
+        return f"/home/{usuario}/media"
+    elif so_atual == "Windows":
+        return "C:\\media"
         
 
 ############################## INTERFACE GRÁFICA ##############################
@@ -59,11 +63,8 @@ label_logo.place(x=(window.winfo_width()/2 - 75),y=20,width=150, height=150)
 
 
 #### CRIAÇÃO DA LABEL E TEXTBOX PARA CADASTRO DA ''PORTA'' ####
-label_porta = Label(window, text="Porta:", font=("Arial","14","bold"), justify="center", background="#91c29b")
-label_porta.place(x=(window.winfo_width()/2 - 90), y=window.winfo_height()/2 + 30, width=60, height=25)
- 
-textBox_porta = Text(window, font=("Arial","12"))
-textBox_porta.place(x=(window.winfo_width()/2 - 25), y=window.winfo_height()/2 + 30,width= 120, height=25)
+label_porta = Label(window, text=f"Porta: {porta}", font=("Arial","14","bold"), justify="center", background="#91c29b")
+label_porta.place(x=(window.winfo_width()/2 - 50), y=window.winfo_height()/2 + 30, width=110, height=25)
 
 
 #### CRIAÇÃO DE UM BOTÃO PARA FAZER A ENTRADA DA PORTA OU CANCELAR ####
