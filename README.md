@@ -1,3 +1,75 @@
+# árvore do projeto
+
+<div>
+<b>Servidor_de_arquivos_RMI/</b> <br>
+│<br>
+├── <b>cliente_rmi/</b><br>
+│   ├── __init__.py<br>
+│   ├── admin.py<br>
+│   ├── apps.py<br>
+│   ├── migrations/<br>
+│   │   ├── __init__.py<br>
+│   │   └── __pycache__/<br>
+│   │       ├── __init__.cpython-311.pyc<br>
+│   │       └── __init__.cpython-312.pyc<br>
+│   ├── models.py<br>
+│   ├── tests.py<br>
+│   ├── views.py<br>
+│   ├── templates/<br>
+│   │   ├── base/<br>
+│   │   │   ├── base.html<br>
+│   │   │   └── menu.html<br>
+│   │   ├── static/<br>
+│   │   │   └── css/<br>
+│   │   │       └── style.css<br>
+│   │   ├── enviar.html<br>
+│   │   └── visualizar.html<br>
+│<br>
+├── <b>media/</b><br>
+│   ├── uploads/<br>
+|<br>
+├── <b>servidor_de_arquivos_rmi/</b><br>
+│   ├── __init__.py<br>
+│   ├── asgi.py<br>
+│   ├── settings.py<br>
+│   ├── urls.py<br>
+│   ├── wsgi.py<br>
+│   └── __pycache__/<br>
+│       ├── __init__.cpython-311.pyc<br>
+│       └── __init__.cpython-312.pyc<br>
+│<br>
+├── <b>servidor_rmi/</b><br>                                                                       
+│   ├── __init__.py<br>
+│   ├── assets/<br>
+│   │   └── server_file.png<br>
+│   ├── Client.py<br>
+│   ├── FileService.py<br>
+│   ├── Server.py<br>
+│   └── __pycache__/<br>
+│       ├── Client.cpython-311.pyc<br>
+│       ├── FileService.cpython-311.pyc<br>
+│       └── Server.cpython-311.pyc<br>
+│<br>
+├── db.sqlite3<br>
+├── manage.py<br>
+├── README.md<br>
+└── .gitignore<br>
+</div>
+
+
+
+# MODIFICAÇÕES ALISSON
+
+- settings.py do servidor_de_arquivos_rmi
+- models.py do cliente_rmi
+- urls.py do servidor_de_arquivos_rmi
+
+<b>o banco de dados já foi construído</b>
+
+
+
+
+
 # requisitos 
 
 - <b>(1)LOGIN</b> Os clientes deverão se conectar ao servidor com as informações necessárias;
