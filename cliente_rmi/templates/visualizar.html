@@ -1,2 +1,23 @@
 {% include "base/base.html" %}
 {% include "base/menu.html" %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Visualizar Arquivos</title>
+</head>
+<body>
+    <h1>Arquivos Enviados</h1>
+
+
+    <ul>
+        {% for arquivo in arquivos %}
+        <li>{{ arquivo.nome_arquivo }} - <a href="{{ arquivo.url_arquivo }}">Download</a></li>
+        {% endfor %}
+    </ul>
+
+
+    <a href="{% url 'enviar_arquivo' %}">Enviar Novo Arquivo</a>
+</body>
+</html>

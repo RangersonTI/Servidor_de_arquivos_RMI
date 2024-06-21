@@ -8,21 +8,30 @@ URI_PYRO5 = "PYRO:obj_ae2eb3ecf13445dfa8934663a0eaaeeb@localhost:3000"
 
 uri_server = Pyro5.Proxy(URI_PYRO5)
 
-def home(request):
-    return render(request, 'index.html')
-
 def visualizar_arquivos(request):
-    return render(request, 'visualizar.html')
+    # Lógica para visualizar os arquivos
+    arquivos = Enviar_Arquivo.objects.all()  # Obtém todos os arquivos salvos
+
+    context = {
+        'arquivos': arquivos
+    }
+    return render(request, 'visualizar.html', context)
 
 def enviar_arquivos(request):
     if request.method == 'POST' and request.FILES.get('file'):
-        arquivo = request.POST.get('arquivo')
-        url = request.POST.get('url')
+        arquivo = request.FILES['file']
+        nome_arquivo = request.POST.get('nome_arquivo', '')
+        url_arquivo = request.POST.get('url_arquivo', '')
 
-        if arquivo and url:
+        if nome_arquivo and url_arquivo:
             try:
-                Enviar_Arquivo.objects.create(nome_arquivo = arquivo, url_arquivo = url)
+                # Salvando o arquivo no banco de dados (ou fazendo outra operação necessária)
+                novo_arquivo = Enviar_Arquivo(nome_arquivo=nome_arquivo, url_arquivo=url_arquivo, arquivo=arquivo)
+                novo_arquivo.save()
+
+                # Redireciona de volta para a página de visualização de arquivos
                 return redirect('visualizar_arquivos')
             except Exception as ex:
-                print(f"Erro: {ex}")
-        
+                print(f"Erro ao salvar o arquivo: {ex}")
+
+    return render(request, 'enviar.html')
