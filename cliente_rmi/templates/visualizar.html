@@ -1,23 +1,26 @@
+{% load static %}
 {% include "base/base.html" %}
 {% include "base/menu.html" %}
 
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <title>Visualizar Arquivos</title>
-</head>
-<body>
+<div class="visualizar_arquivos">
     <h1>Arquivos Enviados</h1>
 
-
-    <ul>
+    <table class="visualizar_arquivos_table">
+        <tr>
+            <th>NOME DO ARQUIVO</th>
+            <th><center>OPÇÕES</center></th>
+        </tr>
+        {% csrf_token %}
         {% for arquivo in arquivos %}
-        <li>{{ arquivo.nome_arquivo }} - <a href="{{ arquivo.url_arquivo }}">Download</a></li>
+        <tr>
+            <td>{{ arquivo.nome_arquivo }}</td>
+            <td>
+                <center><a href="{% url "download_arquivo" arquivo.nome_arquivo%}"><img src="{% static "img/download.png"%}" width="32px"></a>
+                <a href="{% url "deletar_arquivo" arquivo.nome_arquivo %}"><img src="{% static "img/excluir.png"%}" width="32px" srcset=""></a></center>
+            </td>
+        </tr>
         {% endfor %}
-    </ul>
-
-
-    <a href="{% url 'enviar_arquivo' %}">Enviar Novo Arquivo</a>
-</body>
-</html>
+    </table>
+    <br>
+</div>
+{% include "base/footer.html" %}

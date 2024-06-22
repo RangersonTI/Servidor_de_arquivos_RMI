@@ -1,6 +1,8 @@
 import Pyro5.api as Pyro5
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Enviar_Arquivo
+from django.http import Http404
+from django.contrib import messages
 
 # Create your views here.
 
@@ -13,11 +15,16 @@ def visualizar_arquivos(request):
     arquivos = Enviar_Arquivo.objects.all()  # Obtém todos os arquivos salvos
 
     context = {
-        'arquivos': arquivos
+        'arquivos': arquivos,
+        'title': "Visualizar arquivos"
     }
     return render(request, 'visualizar.html', context)
 
 def enviar_arquivos(request):
+    
+    context = {
+        'title' : "Enviar Arquivos"
+    }
     
     print("Formulário enviado via POST")
     print("Conteúdo de FILES:", request.FILES)
@@ -26,7 +33,6 @@ def enviar_arquivos(request):
     if request.method == 'POST' and request.FILES.get('file'):
         arquivo = request.FILES['file']
         nome_arquivo = request.POST.get('nome_arquivo')
-        url_arquivo = request.POST.get('url_arquivo')
 
         if nome_arquivo and arquivo:
             try:
@@ -39,4 +45,18 @@ def enviar_arquivos(request):
             except Exception as ex:
                 print(f"Erro ao salvar o arquivo: {ex}")
 
-    return render(request, 'enviar.html')
+    return render(request, 'enviar.html', context)
+
+def download_arquivo(request, nome_arquivo):
+    return 0
+
+def deletar_arquivo(request, nome_arquivo):
+    try:
+        print(f"\n{nome_arquivo}\n")
+        delete_arquivo = get_object_or_404(Enviar_Arquivo, nome_arquivo = nome_arquivo)
+        delete_arquivo.delete()
+        messages.success(request, 'Arquivo excluído com sucesso.')
+        return redirect('/')
+    except FileNotFoundError:
+        #raise Http404(f"O arquivo '{nome_arquivo}' não foi encontrado")
+        print("Arquivo não localizado")

@@ -18,22 +18,19 @@ class Server:
         daemon = Pyro5.Daemon(port=porta)
         uri = daemon.register(file_service)
 
-        #name_server = Pyro5.locate_ns()
-        #name_server.register("obj", uri)
-
         print(f"Serviço de arquivo em funcionamento. \nURI: {uri}")
         daemon.requestLoop()
-        
-    
+
+
 def iniciar_servidor():
-    
+
     if __name__ == "__main__":
         Server.main()
-        
+
     print("Servidor Iniciado")
 
 def fechar_servidor():
-    return 0
+    exit()
 
 def verificar_SO():
     so_atual = platform.system()
@@ -43,7 +40,7 @@ def verificar_SO():
         return f"/home/{usuario}/media"
     elif so_atual == "Windows":
         return "C:\\media"
-        
+
 
 ############################## INTERFACE GRÁFICA ##############################
 

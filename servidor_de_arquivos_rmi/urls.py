@@ -25,6 +25,8 @@ urlpatterns = [
     path('',view_client.visualizar_arquivos, name='visualizar_arquivos'),
     path('files/',view_client.visualizar_arquivos, name='visualizar_arquivos'),
     path('upload/',view_client.enviar_arquivos, name='enviar_arquivo'),
+    path('download/<str:nome_arquivo>',view_client.download_arquivo, name='download_arquivo'),
+    path('delete/<str:nome_arquivo>',view_client.deletar_arquivo, name='deletar_arquivo'),
 ]
 
 if settings.DEBUG:
