@@ -16,6 +16,7 @@ def visualizar_arquivos(request):
 
     context = {
         'arquivos': arquivos,
+        'qtd_arquivos':arquivos.count,
         'title': "Visualizar arquivos"
     }
     return render(request, 'visualizar.html', context)

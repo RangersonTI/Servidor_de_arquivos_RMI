@@ -2,6 +2,7 @@
 # Para instalar, é necessário que o ambiente ´venv´ esteje ativo'. Basta executar o comando pip install Pyro5. 
 # Após instalado, reiniciar o vscode e verificar se parou o erro.
 
+import socket
 from tkinter import *
 from tkinter.ttk import Label
 import Pyro5.api as Pyro5
@@ -11,17 +12,40 @@ from FileService import FileService
 porta = 3000
 
 class Server:
+    
     def main():
         diretorio = verificar_SO()
         file_service = FileService(diretorio)
 
-        daemon = Pyro5.Daemon(port=porta)
-        uri = daemon.register(file_service)
+        daemon = Pyro5.Daemon(port=porta, host=f"{meu_ip()}")
+        uri = daemon.register(file_service, "servidor.arquivo.rmi")
+
 
         print(f"Serviço de arquivo em funcionamento. \nURI: {uri}")
         daemon.requestLoop()
 
+def verificar_SO():
+    so_atual = platform.system()
+    usuario = os.getlogin()
 
+    if so_atual == "Linux":
+        return f"/home/{usuario}/Documentos/GitHub/Servidor_de_arquivos_RMI/servidor_rmi/media"
+    elif so_atual == "Windows":
+        return "C:\\media"
+    
+def meu_ip():
+    # Cria um socket temporário e tenta se conectar a um endereço externo
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    try:
+        # Não precisamos realmente se conectar, apenas descobrir a interface de saída usada.
+        s.connect(("8.8.8.8", 80))
+        ip = s.getsockname()[0]
+    finally:
+        s.close()
+    return ip
+if __name__ == "__main__":
+        Server.main()
+"""
 def iniciar_servidor():
 
     if __name__ == "__main__":
@@ -32,14 +56,7 @@ def iniciar_servidor():
 def fechar_servidor():
     exit()
 
-def verificar_SO():
-    so_atual = platform.system()
-
-    if so_atual == "Linux":
-        usuario = os.getlogin()
-        return f"/home/{usuario}/media"
-    elif so_atual == "Windows":
-        return "C:\\media"
+    
 
 
 ############################## INTERFACE GRÁFICA ##############################
@@ -71,3 +88,4 @@ botao_iniciar.place(x=(window.winfo_width()/2 - botao_iniciar.winfo_width()) - 1
 botao_cancelar = Button(window, text="Cancelar", font=("Velvica","16","bold"), justify="center", background="#d13f3f", foreground="#ededed", command=fechar_servidor)
 botao_cancelar.place(x=(window.winfo_width()/2 - botao_cancelar.winfo_width()) + 40, y=window.winfo_height()/2 + 130, width=140, height=30)
 window.mainloop()
+"""
