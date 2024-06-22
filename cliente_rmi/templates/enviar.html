@@ -1,28 +1,18 @@
 {% include "base/base.html" %}
+{% include "base/menu.html" %}
 
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <title>Enviar Arquivo</title>
-</head>
-<body>
-    <h1>Enviar Novo Arquivo</h1>
-
-
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
+<br><br>
+<form class="form_container" method="post" enctype="multipart/form-data">
+    <h1>Upload de Arquivo</h1>
+    {% csrf_token %}
+    <div class="div_formulario">
         <label for="nome_arquivo">Nome do Arquivo:</label>
         <input type="text" id="nome_arquivo" name="nome_arquivo"><br><br>
-       
         <label for="url_arquivo">URL do Arquivo:</label>
         <input type="text" id="url_arquivo" name="url_arquivo"><br><br>
-       
         <input type="file" id="file" name="file"><br><br>
-       
-        <input type="submit" value="Enviar">
-    </form>
-</body>
-</html>
-
-
+    </div>
+    <div class="button_enviar_arquivo">
+        <input type="submit" value="Enviar Arquivo" width="70px"><br>
+    </div>
+</form>
