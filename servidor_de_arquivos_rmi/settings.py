@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-#4mbjri@k^ji^%z39e9k#j&b65%_3l3mtgh6m*uu*)0f=ko_vu
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.1.100', '192.168.1.101', '192.168.1.102', '192.168.1.103' 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['192.168.1.100', '192.168.1.101', '192.168.1.102', '192.168.1.103', '192.168.1.105', '192.168.1.105', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -124,7 +124,8 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # URL para acessar os arquivos de mídia
-MEDIA_URL = '/media/'
+MEDIA_URL = '/servidor_rmi/media/'
 
 # Caminho onde os arquivos de mídia serão armazenados
 MEDIA_ROOT = BASE_DIR / 'media'
+PYTHONPATH= '/Servidor_de_arquivos_RMI/cliente_rmi/models.py'

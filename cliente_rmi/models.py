@@ -22,8 +22,8 @@ class Enviar_Arquivo(models.Model):
             os.remove(self.arquivo.path)
         self.delete()
 
-@receiver(post_delete, sender=Enviar_Arquivo)
-def deletar_arquivo(sender, instance, **kwargs):
-    # Verifica se o arquivo existe e o remove
-    if instance.arquivo and os.path.isfile(instance.arquivo.path):
-        os.remove(instance.arquivo.path)
+#@receiver(post_delete, sender=Enviar_Arquivo)
+#def deletar_arquivo(sender, instance, **kwargs):
+#    # Verifica se o arquivo existe e o remove
+#    if instance.arquivo and os.path.isfile(instance.arquivo.path):
+#        os.remove(instance.arquivo.path)

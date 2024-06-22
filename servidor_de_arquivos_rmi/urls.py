@@ -17,17 +17,10 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static 
 from django.contrib import admin
-from django.urls import path
-from cliente_rmi import views as view_client
+from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',view_client.visualizar_arquivos, name='visualizar_arquivos'),
-    path('files/',view_client.visualizar_arquivos, name='visualizar_arquivos'),
-    path('upload/',view_client.enviar_arquivos, name='enviar_arquivo'),
-    path('download/<str:nome_arquivo>',view_client.download_arquivo, name='download_arquivo'),
-    path('delete/<str:nome_arquivo>',view_client.deletar_arquivo, name='deletar_arquivo'),
+    path('', include('cliente_rmi.urls')),
+    path('files/', include('cliente_rmi.urls')),
 ]
-
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

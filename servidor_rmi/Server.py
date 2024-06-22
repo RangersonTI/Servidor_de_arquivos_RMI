@@ -6,7 +6,6 @@ import socket
 from tkinter import *
 from tkinter.ttk import Label
 import Pyro5.api as Pyro5
-import platform, os
 from FileService import FileService
 
 porta = 3000
@@ -14,38 +13,18 @@ porta = 3000
 class Server:
     
     def main():
-        diretorio = verificar_SO()
-        file_service = FileService(diretorio)
+        
+        Pyro5.Daemon.serveSimple(
+            {
+                FileService: "servidor.arquivo.rmi"
+            },
+            ns= False,
+            port=porta,
+            host=meu_ip()
+        )
+        print(f"Serviço de arquivo em funcionamento.")
 
-        daemon = Pyro5.Daemon(port=porta, host=f"{meu_ip()}")
-        uri = daemon.register(file_service, "servidor.arquivo.rmi")
-
-
-        print(f"Serviço de arquivo em funcionamento. \nURI: {uri}")
-        daemon.requestLoop()
-
-def verificar_SO():
-    so_atual = platform.system()
-    usuario = os.getlogin()
-
-    if so_atual == "Linux":
-        return f"/home/{usuario}/Documentos/GitHub/Servidor_de_arquivos_RMI/servidor_rmi/media"
-    elif so_atual == "Windows":
-        return "C:\\media"
-    
-def meu_ip():
-    # Cria um socket temporário e tenta se conectar a um endereço externo
-    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    try:
-        # Não precisamos realmente se conectar, apenas descobrir a interface de saída usada.
-        s.connect(("8.8.8.8", 80))
-        ip = s.getsockname()[0]
-    finally:
-        s.close()
-    return ip
-if __name__ == "__main__":
-        Server.main()
-"""
+        
 def iniciar_servidor():
 
     if __name__ == "__main__":
@@ -56,8 +35,17 @@ def iniciar_servidor():
 def fechar_servidor():
     exit()
 
+def meu_ip():
+    # Cria um socket temporário e tenta se conectar a um endereço externo
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    try:
+        # Não precisamos realmente se conectar, apenas descobrir a interface de saída usada.
+        s.connect(("8.8.8.8", 80))
+        ip = s.getsockname()[0]
+    finally:
+        s.close()
+    return ip
     
-
 
 ############################## INTERFACE GRÁFICA ##############################
 
@@ -88,4 +76,3 @@ botao_iniciar.place(x=(window.winfo_width()/2 - botao_iniciar.winfo_width()) - 1
 botao_cancelar = Button(window, text="Cancelar", font=("Velvica","16","bold"), justify="center", background="#d13f3f", foreground="#ededed", command=fechar_servidor)
 botao_cancelar.place(x=(window.winfo_width()/2 - botao_cancelar.winfo_width()) + 40, y=window.winfo_height()/2 + 130, width=140, height=30)
 window.mainloop()
-"""

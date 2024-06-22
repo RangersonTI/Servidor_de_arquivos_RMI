@@ -8,12 +8,14 @@
     <table class="visualizar_arquivos_table">
         <tr>
             <th>NOME DO ARQUIVO</th>
+            <th>DATA DE UPLOAD</th>
             <th><center>OPÇÕES</center></th>
         </tr>
         {% csrf_token %}
         {% for arquivo in arquivos %}
         <tr>
             <td>{{ arquivo.nome_arquivo }}</td>
+            <td>{{ arquivo.data_upload }}</td>
             <td>
                 <center><a href="{% url "download_arquivo" arquivo.nome_arquivo%}"><img src="{% static "img/download.png"%}" width="32px"></a>
                 <a href="{% url "deletar_arquivo" arquivo.nome_arquivo %}"><img src="{% static "img/excluir.png"%}" width="32px" srcset=""></a></center>
