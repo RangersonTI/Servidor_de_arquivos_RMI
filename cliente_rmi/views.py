@@ -49,17 +49,19 @@ def enviar_arquivos(request):
 
     return render(request, 'enviar.html', context)
 
+
 def download_arquivo(request, nome_arquivo):
-    uri_server = Pyro5.Proxy(URI_PYRO5)  # Certifique-se de que URI_PYRO5 esteja definido corretamente
     try:
-        caminho_arquivo = uri_server.buscar_arquivo(nome_arquivo)  # Supondo que a função buscar_arquivo retorne o caminho completo do arquivo no servidor
-        if os.path.exists(caminho_arquivo):
-            return FileResponse(open(caminho_arquivo, 'rb'), content_type='application/octet-stream')
-        else:
-            raise FileNotFoundError(f"Arquivo '{nome_arquivo}' não encontrado.")
-    except Exception as ex:
-        print(f"Erro ao baixar o arquivo: {ex}")
-        return HttpResponse("Erro ao baixar o arquivo.", status=500)
+        print(f"\n{nome_arquivo}\n")
+        arquivo = get_object_or_404(Enviar_Arquivo, nome_arquivo=nome_arquivo)
+        response = HttpResponse(arquivo.arquivo.read(), content_type='application/octet-stream')
+        response['Content-Disposition'] = f'attachment; filename="{nome_arquivo}"'
+        messages.success(request, 'Arquivo baixado com sucesso.')
+        return response
+    except FileNotFoundError:
+        messages.error(request, f"O arquivo '{nome_arquivo}' não foi encontrado.")
+        return redirect('/')
+    
     
 def deletar_arquivo(request, nome_arquivo):
     try:
