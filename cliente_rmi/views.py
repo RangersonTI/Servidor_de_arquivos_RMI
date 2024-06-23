@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Enviar_Arquivo
 from django.http import Http404
 from django.contrib import messages
-
+from django.http import FileResponse
 # Create your views here.
 
 URI_PYRO5 = "PYRO:obj_64c224b013c04337a7bdabdc0270322f@localhost:3000"
@@ -48,7 +48,16 @@ def enviar_arquivos(request):
     return render(request, 'enviar.html', context)
 
 def download_arquivo(request, nome_arquivo):
-    return 0
+    try:
+        # Localiza o arquivo na base de dados
+        arquivo = Enviar_Arquivo.objects.get(nome_arquivo=nome_arquivo)
+        
+        file_path = f"uploads/{arquivo.arquivo.name}"
+        return FileResponse(open(file_path, 'rb'), content_type='application/octet-stream',
+                            as_attachment=True, filename=arquivo.nome_arquivo)
+    except Enviar_Arquivo.DoesNotExist:
+        # Se o arquivo não for encontrado, redireciona para uma página de erro ou mensagem
+        return redirect('erro_page')
 
 def deletar_arquivo(request, nome_arquivo):
     try:
