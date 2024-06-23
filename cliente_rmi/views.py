@@ -49,9 +49,9 @@ def enviar_arquivos(request):
 
 def download_arquivo(request, nome_arquivo):
     try:
-        # Localiza o arquivo na base de dados
+        # Localiza o arquivo na base de dados 
+        # fazer 
         arquivo = Enviar_Arquivo.objects.get(nome_arquivo=nome_arquivo)
-        
         file_path = f"uploads/{arquivo.arquivo.name}"
         return FileResponse(open(file_path, 'rb'), content_type='application/octet-stream',
                             as_attachment=True, filename=arquivo.nome_arquivo)
