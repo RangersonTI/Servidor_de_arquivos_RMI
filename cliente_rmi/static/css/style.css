@@ -26,8 +26,7 @@ footer{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     padding: 15px 0;
     width: 100%;
-    position: absolute; /*Deixa o footer totalmente no final*/
-    bottom: 0;
+    bottom: 100;
 }
 
 /*VISUALIZAR.HTML*/
