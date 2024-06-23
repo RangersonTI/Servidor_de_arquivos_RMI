@@ -14,17 +14,20 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-
+from django.conf import settings
 from django.conf.urls.static import static 
 from django.contrib import admin
 from django.urls import path
-from cliente_rmi.views import Visualizar_arquivos, Enviar_arquivos, Deletar_arquivo, Download_arquivo
+from cliente_rmi import views as view_client
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',Visualizar_arquivos.as_view(), name='visualizar_arquivos'),
-    path('files/',Visualizar_arquivos.as_view(), name='visualizar_arquivos'),
-    path('upload/',Enviar_arquivos.as_view(), name='enviar_arquivo'),
-    path('download/<str:nome_arquivo>',Download_arquivo.as_view, name='download_arquivo'),
-    path('delete/<str:nome_arquivo>',Deletar_arquivo.as_view, name='deletar_arquivo'),
+    path('',view_client.visualizar_arquivos, name='visualizar_arquivos'),
+    path('files/',view_client.visualizar_arquivos, name='visualizar_arquivos'),
+    path('upload/',view_client.enviar_arquivos, name='enviar_arquivo'),
+    path('download/<str:nome_arquivo>',view_client.download_arquivo, name='download_arquivo'),
+    path('delete/<str:nome_arquivo>',view_client.deletar_arquivo, name='deletar_arquivo'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
