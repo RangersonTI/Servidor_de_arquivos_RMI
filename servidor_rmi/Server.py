@@ -12,8 +12,9 @@ porta = 3000
 
 class Server:
     
+    @staticmethod
     def main():
-        
+
         Pyro5.Daemon.serveSimple(
             {
                 FileService: "servidor.arquivo.rmi"
