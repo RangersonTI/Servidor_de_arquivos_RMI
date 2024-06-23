@@ -49,18 +49,34 @@ def enviar_arquivos(request):
 
     return render(request, 'enviar.html', context)
 
-
 def download_arquivo(request, nome_arquivo):
     try:
-        print(f"\n{nome_arquivo}\n")
         arquivo = get_object_or_404(Enviar_Arquivo, nome_arquivo=nome_arquivo)
-        response = HttpResponse(arquivo.arquivo.read(), content_type='application/octet-stream')
-        response['Content-Disposition'] = f'attachment; filename="{nome_arquivo}"'
+        
+        # Verifica o tipo de arquivo solicitado
+        tipo_arquivo = request.GET.get('tipo', None)
+        
+        if tipo_arquivo == 'pdf':
+            # Serve o arquivo como PDF
+            response = FileResponse(open(arquivo.arquivo.path, 'rb'), content_type='application/pdf')
+            response['Content-Disposition'] = f'attachment; filename="{nome_arquivo}.pdf"'
+        elif tipo_arquivo == 'png':
+            # Serve o arquivo como PNG
+            response = FileResponse(open(arquivo.arquivo.path, 'rb'), content_type='image/png')
+            response['Content-Disposition'] = f'attachment; filename="{nome_arquivo}.png"'
+        else:
+            # Se nenhum tipo especificado, serve o arquivo original
+            response = HttpResponse(arquivo.arquivo.read(), content_type='application/octet-stream')
+            response['Content-Disposition'] = f'attachment; filename="{nome_arquivo}"'
+        
         messages.success(request, 'Arquivo baixado com sucesso.')
         return response
     except FileNotFoundError:
         messages.error(request, f"O arquivo '{nome_arquivo}' não foi encontrado.")
         return redirect('/')
+
+    
+    
     
     
 def deletar_arquivo(request, nome_arquivo):
