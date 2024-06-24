@@ -5,7 +5,7 @@
 from tkinter import *
 from tkinter.ttk import Label
 import Pyro5.api as Pyro5
-import platform, os
+import platform, os, socket
 from FileService import FileService
 
 porta = 3000
@@ -15,10 +15,10 @@ class Server:
         diretorio = verificar_SO()
         file_service = FileService(diretorio)
 
-        daemon = Pyro5.Daemon(port=porta)
-        uri = daemon.register(file_service)
-
+        daemon = Pyro5.Daemon(port=porta,host=str(meu_ip()))
+        uri = daemon.register(file_service, 'servidor.arquivo.rmi')
         print(f"Serviço de arquivo em funcionamento. \nURI: {uri}")
+
         daemon.requestLoop()
 
 
@@ -40,6 +40,17 @@ def verificar_SO():
         return f"/home/{usuario}/media"
     elif so_atual == "Windows":
         return "C:\\media"
+    
+def meu_ip():
+    # Cria um socket temporário e tenta se conectar a um endereço externo
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    try:
+        # Não precisamos realmente se conectar, apenas descobrir a interface de saída usada.
+        s.connect(("8.8.8.8", 80))
+        ip = s.getsockname()[0]
+    finally:
+        s.close()
+    return ip
 
 
 ############################## INTERFACE GRÁFICA ##############################

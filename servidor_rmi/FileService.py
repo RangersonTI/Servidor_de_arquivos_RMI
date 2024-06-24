@@ -38,3 +38,6 @@ class FileService:
 
         if os.path.exists(arquivo):
             os.remove(arquivo)
+            
+    def login(self):
+        return True

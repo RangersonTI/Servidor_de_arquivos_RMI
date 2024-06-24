@@ -9,9 +9,17 @@ import os
 
 # Create your views here.
 
-URI_PYRO5 = "PYRO:obj_64c224b013c04337a7bdabdc0270322f@localhost:3000"
+URI_PYRO5 = "PYRO:servidor.arquivo.rmi@192.168.1.1s03:3000"
+#uri = "PYRO:servidor.arquivo.rmi@localhost:3000"
+try:
+    uri_server = Pyro5.Proxy(URI_PYRO5)
 
-uri_server = Pyro5.Proxy(URI_PYRO5)
+    if(Pyro5.Proxy(URI_PYRO5).login()):
+        print(" Deu certo - True")
+    else:
+        print(" Ixi, não deu kkkk")
+except:
+    print("Deu erro KKKKKK")
 
 def visualizar_arquivos(request):
     # Lógica para visualizar os arquivos
@@ -20,7 +28,7 @@ def visualizar_arquivos(request):
     #for x in listdir("media/uploads"):
     #    extensoes = x[x.rfind('.'):]
     #    print(extensoes)
-    
+
 
     for arquivo in arquivos:
         _,tipo = os.path.splitext(arquivo.arquivo.path)
