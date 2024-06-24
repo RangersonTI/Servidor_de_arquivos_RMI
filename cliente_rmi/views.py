@@ -4,6 +4,7 @@ from .models import Enviar_Arquivo
 from django.http import Http404
 from django.contrib import messages
 from django.http import FileResponse, HttpResponse
+from os import listdir
 import os
 
 # Create your views here.
@@ -15,9 +16,24 @@ uri_server = Pyro5.Proxy(URI_PYRO5)
 def visualizar_arquivos(request):
     # Lógica para visualizar os arquivos
     arquivos = Enviar_Arquivo.objects.all()  # Obtém todos os arquivos salvos
+    arquivos_extensoes = []
+    #for x in listdir("media/uploads"):
+    #    extensoes = x[x.rfind('.'):]
+    #    print(extensoes)
+    
+
+    for arquivo in arquivos:
+        _,tipo = os.path.splitext(arquivo.arquivo.path)
+        extensao = (tipo[1:] if tipo.startswith('.') else tipo)
+        
+        arquivos_extensoes.append({
+            'nome_arquivo': arquivo.nome_arquivo,
+            'extensao': extensao
+    })
+
 
     context = {
-        'arquivos': arquivos,
+        'arquivos': arquivos_extensoes,
         'title': "Visualizar arquivos"
     }
     return render(request, 'visualizar.html', context)
@@ -50,6 +66,7 @@ def enviar_arquivos(request):
     return render(request, 'enviar.html', context)
 
 def download_arquivo(request, nome_arquivo):
+    
     try:
         arquivo = get_object_or_404(Enviar_Arquivo, nome_arquivo=nome_arquivo)
         

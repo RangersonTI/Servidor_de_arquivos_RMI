@@ -32,24 +32,27 @@ footer{
 /*VISUALIZAR.HTML*/
 
 .visualizar_arquivos{
-    background-color: azure;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 800;
     width: 100%;
-    padding-left: 10px;
     padding-top: 0;
+    padding-left: 10px;
     justify-content: center;
-    margin: auto;
 }
 
-    .visualizar_arquivos img{
-        padding-left: 15px;
-    }
-    .visualizar_arquivos h1{
-        width: 100%;
-        text-align: center;
-    }
-    .visualizar_arquivos table{
+.visualizar_arquivos img{
+    padding-left: 15px;
+}
+.visualizar_arquivos h1{
+    width: 100%;
+    text-align: center;
+}
+.visualizar_arquivos table{
         justify-items: center; /* Centraliza horizontalmente */
         align-items: center;  /* Centraliza verticalmente */
+        font-weight: 300;
+        border-style:groove;
+        border-width: 4px;
     }
     .visualizar_arquivos_table{
         background-color: aqua;

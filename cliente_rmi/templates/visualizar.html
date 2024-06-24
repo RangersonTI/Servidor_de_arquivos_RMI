@@ -2,26 +2,29 @@
 {% include "base/base.html" %}
 {% include "base/menu.html" %}
 
-<div class="visualizar_arquivos">
+<div class="visualizar_arquivos" border="2">
     <h1>Arquivos Enviados</h1>
 
     <table class="visualizar_arquivos_table">
         <tr>
+            <th></th>
             <th>NOME DO ARQUIVO</th>
+            <th>TIPO DO ARQUIVO</th>
             <th><center>OPÇÕES</center></th>
         </tr>
         {% csrf_token %}
         {% for arquivo in arquivos %}
         <tr>
+            <td>{{ forloop.counter }}</td>
             <td>{{ arquivo.nome_arquivo }}</td>
-            <td>{{ arquivo.nome_arquivo }}</td>
+            <td><center>{{ arquivo.extensao }}</center></td>
             <td>
-                <center><a href="{% url "download_arquivo" arquivo.nome_arquivo%}"><img src="{% static "img/download.png"%}" width="32px"></a>
+                <center><a href="{% url "download_arquivo" arquivo.nome_arquivo %}"><img src="{% static "img/download.png"%}" width="32px"></a>
                 <a href="{% url "deletar_arquivo" arquivo.nome_arquivo %}"><img src="{% static "img/excluir.png"%}" width="32px" srcset=""></a></center>
             </td>
         </tr>
         {% endfor %}
     </table>
-    <br>
 </div>
+<br><br><br><br><br><br>
 {% include "base/footer.html" %}
