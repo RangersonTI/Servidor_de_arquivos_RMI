@@ -15,7 +15,7 @@
         {% csrf_token %}
         {% for arquivo in arquivos %}
         <tr>
-            <td>{{ forloop.counter }}</td>
+            <td>{{ forloop.counter }}.   </td>
             <td>{{ arquivo.nome_arquivo }}</td>
             <td><center>{{ arquivo.extensao }}</center></td>
             <td>
@@ -26,5 +26,5 @@
         {% endfor %}
     </table>
 </div>
-<br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 {% include "base/footer.html" %}
