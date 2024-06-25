@@ -1,4 +1,4 @@
-# árvore do projeto
+# ARVORE DO PROJETO
 
 <div>
 <b>Servidor_de_arquivos_RMI/</b> <br>
@@ -15,18 +15,25 @@
 │   ├── models.py<br>
 │   ├── tests.py<br>
 │   ├── views.py<br>
+│   ├── static<br>
+│   │   ├── css/<br>
+│   │   │   └── style.css<br>
+│   │   └── img/<br>
+│   │       ├── download.png<br>
+│   │       ├── excluir.png<br>
+│   │       ├── fundologin.jpg<br>
+│   │       └── server_file.ico<br>
 │   ├── templates/<br>
 │   │   ├── base/<br>
 │   │   │   ├── base.html<br>
+│   │   │   ├── footer.html<br>
 │   │   │   └── menu.html<br>
-│   │   ├── static/<br>
-│   │   │   └── css/<br>
-│   │   │       └── style.css<br>
 │   │   ├── enviar.html<br>
+│   │   ├── login.html<br>
 │   │   └── visualizar.html<br>
 │<br>
 ├── <b>media/</b><br>
-│   ├── uploads/<br>
+│       └── uploads/<br>
 |<br>
 ├── <b>servidor_de_arquivos_rmi/</b><br>
 │   ├── __init__.py<br>
@@ -57,20 +64,7 @@
 </div>
 
 
-
-# MODIFICAÇÕES ALISSON
-
-- settings.py do servidor_de_arquivos_rmi
-- models.py do cliente_rmi
-- urls.py do servidor_de_arquivos_rmi
-
-<b>o banco de dados já foi construído</b>
-
-
-
-
-
-# requisitos 
+# REQUISITOS 
 
 - <b>(1)LOGIN</b> Os clientes deverão se conectar ao servidor com as informações necessárias;
 - <b>(2)VISUALIZAR</b> Os clientes poderão visualizar os arquivos presentes no servidor após a conexão;
@@ -80,23 +74,31 @@ aos demais clientes conectados;
 o upload;
 - <b>(5)FUNÇÃO GET ARQUIVO</b> Os clientes poderão efetuar o download dos arquivos presentes no servidor.
 
-# funções 
+# FUNÇÕES 
 
 - camada view (FUNÇÕES NECESSÁRIAS PARA O FUNCIONAMENTO DA APLICAÇÃO)
 
-- camada model (ENVIAR E DELETE)
+- camada model (ENVIAR E DELETAR)
 
-- camada template (VISUALIZAR OS ARQUIVOS) e (LOGIN)
+- camada template (VISUALIZAR OS ARQUIVOS) e (LOGIN) - FRONT END
 
 
-# contribuintes
+# CONTRIBUINTES
 
-- <b>RANGERSON</b> interface do servidor
-- <b>ALISSON</b> -> camada model
-- <b>LUIS FELIPE</b> view
-- <b>ISRAEL</b> -> login
+- <b>RANGERSON</b> SERVIDOR / FUNÇÃO ENVIAR / DELETAR
+- <b>ALISSON</b> -> BANCO DE DADOS
+- <b>LUIS FELIPE</b> FUNÇÃO VISUALIZAR / BAIXAR
+- <b>ISRAEL</b> -> LOGIN
 
-# Dependências
-Pyro5 -> pip install Pyro5
-Tkinter -> sudo apt-get install python3-tk (Linux)
-Django -> pip install django
+# DEPENDÊNCIAS
+<br>Pyro5 -> pip install Pyro5
+<br>Tkinter -> sudo apt-get install python3-tk (Linux)
+<br>Django -> pip install django
+
+# FUNCIONAMENTO
+<br><b>1. Funcionamento do servidor RMI: </b>Primeiramente, deve-se executar a interface servidor RMI, com o arquivo <a href="#">Server.py</a>, da pasta <i>servidor_rmi</i>. Será carregado a interface gráfica, e para iniciar o servidor, clique em 'Iniciar'.
+<p>Será gerado um token e mostrado no <b>console</b>. Esse token será utilizado na interface do cliente para realização do login<p>
+
+<br><b>2. Execução da aplicação (Django): </b> Após a execução do servidor RMI, proximo passo é a execução do django para iniciar a aplicação.
+
+<br><b>3. Login: </b> Feito a execução do django, faça o login utilizando o token fornecido pelo <b>servidor RMI</b> e aproveite😎
