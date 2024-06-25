@@ -9,17 +9,26 @@ import os
 
 # Create your views here.
 
-URI_PYRO5 = "PYRO:servidor.arquivo.rmi@192.168.1.1s03:3000"
-#uri = "PYRO:servidor.arquivo.rmi@localhost:3000"
-try:
-    uri_server = Pyro5.Proxy(URI_PYRO5)
+URI_PYRO5 = ""
 
-    if(Pyro5.Proxy(URI_PYRO5).login()):
-        print(" Deu certo - True")
-    else:
-        print(" Ixi, não deu kkkk")
-except:
-    print("Deu erro KKKKKK")
+def login(request):
+    context = {
+        'title': 'Login'
+    }
+    
+    if request.method == 'POST':
+        URI_PYRO5 = request.POST.get('key_rmi')
+        
+    if URI_PYRO5: 
+        try:
+            uri_server = Pyro5.Proxy(URI_PYRO5)
+
+            if(Pyro5.Proxy(URI_PYRO5).login()):
+                print(" Deu certo - True")
+            else:
+                print(" Ixi, não deu kkkk")
+        except:
+            print("Deu erro KKKKKK")
 
 def visualizar_arquivos(request):
     # Lógica para visualizar os arquivos

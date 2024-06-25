@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('static/img/fundologin.jpg');
+            background-size: cover; /* Ajusta a imagem para cobrir toda a tela */
+            background-repeat: no-repeat; /* Impede que a imagem se repita */
+            background-attachment: fixed; /* Mantém a imagem fixa enquanto você rola a página */
+            background-position: center; /* Centraliza a imagem */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0; /* Corrigido de 20 para 0 */
+        }
+        .login-container {
+            background-color: rgba(255, 255, 255, 0.142);
+            padding: 75px;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(130, 34, 34, 0.1);
+            text-align: center;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Digite aqui sua chave RMI" name = "key_rmi" required>
+            <button type="button" onclick="login()">Entrar</button>
+        </form>
+        <p id="message"></p>
+    </div>
+
+</body>
+</html>
