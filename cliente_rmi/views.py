@@ -11,24 +11,31 @@ import os
 
 URI_PYRO5 = ""
 
+logado = False
+
 def login(request):
     context = {
         'title': 'Login'
     }
     
-    if request.method == 'POST':
-        URI_PYRO5 = request.POST.get('key_rmi')
-        
+    
+    URI_PYRO5 = request.POST.get('key_rmi')
+    print(URI_PYRO5)
+    
     if URI_PYRO5: 
         try:
             uri_server = Pyro5.Proxy(URI_PYRO5)
 
             if(Pyro5.Proxy(URI_PYRO5).login()):
                 print(" Deu certo - True")
+                logado = True
+                return redirect('visualizar_arquivos')
             else:
                 print(" Ixi, não deu kkkk")
         except:
             print("Deu erro KKKKKK")
+                
+    return render(request,'login.html', context)
 
 def visualizar_arquivos(request):
     # Lógica para visualizar os arquivos
@@ -102,15 +109,17 @@ def download_arquivo(request, nome_arquivo):
         messages.error(request, f"O arquivo '{nome_arquivo}' não foi encontrado.")
         return redirect('/')
 
-    
+
     
 def deletar_arquivo(request, nome_arquivo):
+    
+    
     try:
         print(f"\n{nome_arquivo}\n")
         delete_arquivo = get_object_or_404(Enviar_Arquivo, nome_arquivo = nome_arquivo)
         delete_arquivo.delete()
         messages.success(request, 'Arquivo excluído com sucesso.')
-        return redirect('/')
+        return redirect('/files')
     except FileNotFoundError:
         #raise Http404(f"O arquivo '{nome_arquivo}' não foi encontrado")
         print("Arquivo não localizado")
