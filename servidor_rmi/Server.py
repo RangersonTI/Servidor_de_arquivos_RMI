@@ -42,10 +42,8 @@ def verificar_SO():
         return "C:\\media"
     
 def meu_ip():
-    # Cria um socket temporário e tenta se conectar a um endereço externo
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     try:
-        # Não precisamos realmente se conectar, apenas descobrir a interface de saída usada.
         s.connect(("8.8.8.8", 80))
         ip = s.getsockname()[0]
     finally:
